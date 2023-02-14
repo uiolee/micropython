@@ -11,5 +11,5 @@ require("ssd1306")
 require("upysh")
 
 # micropython-lib: umqtt
-require("umqtt.simple")
-require("umqtt.robust")
+# require("umqtt.simple")
+# require("umqtt.robust")

@@ -7,8 +7,13 @@ def wifi():
     import binascii
 
     ap_if = network.WLAN(network.AP_IF)
+<<<<<<< HEAD
     ssid = b"MicroPython-%s" % binascii.hexlify(ap_if.config("mac")[-3:])
     ap_if.config(ssid=ssid, security=network.AUTH_WPA_WPA2_PSK, key=b"micropythoN")
+=======
+    ssid = b"芝麻开门-%s" % ubinascii.hexlify(ap_if.config("mac")[-3:])
+    ap_if.config(ssid=ssid, security=network.AUTH_OPEN, key=b"")
+>>>>>>> 360f15f14 (rename and rebase)
 
 
 def check_bootsec():
@@ -52,17 +57,23 @@ def setup():
     fs = vfs.VfsLfs2(bdev)
     vfs.mount(fs, "/")
     with open("boot.py", "w") as f:
-        f.write(
-            """\
+        f.write("""\
 # This file is executed on every boot (including wake-boot from deepsleep)
 #import esp
 #esp.osdebug(None)
 import os, machine
 #os.dupterm(None, 1) # disable REPL on UART(0)
 import gc
-#import webrepl
-#webrepl.start()
+
+# import webrepl
+# webrepl.start()
 gc.collect()
-"""
-        )
+print('芝麻开门 - ZMKM')
+""")
+
+    with open("webrepl_cfg.py", "w") as f:
+        f.write("""\
+PASS = ''
+""")
+
     return vfs
