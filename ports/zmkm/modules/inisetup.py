@@ -7,8 +7,8 @@ def wifi():
     import ubinascii
 
     ap_if = network.WLAN(network.AP_IF)
-    ssid = b"MicroPython-%s" % ubinascii.hexlify(ap_if.config("mac")[-3:])
-    ap_if.config(ssid=ssid, security=network.AUTH_WPA_WPA2_PSK, key=b"micropythoN")
+    ssid = b"芝麻开门-%s" % ubinascii.hexlify(ap_if.config("mac")[-3:])
+    ap_if.config(ssid=ssid, security=network.AUTH_OPEN, key=b"")
 
 
 def check_bootsec():
@@ -53,7 +53,7 @@ def setup():
 # This file is executed on every boot (including wake-boot from deepsleep)
 #import esp
 #esp.osdebug(None)
-import uos, machine
+#import uos, machine
 #uos.dupterm(None, 1) # disable REPL on UART(0)
 import gc
 #import webrepl
@@ -61,4 +61,6 @@ import gc
 gc.collect()
 """
         )
+    with open('test','w') as f:
+        f.write('test')
     return vfs
