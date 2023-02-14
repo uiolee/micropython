@@ -13,4 +13,4 @@ if bdev:
         inisetup.setup()
 
 gc.collect()
-print('fuck')
+print('芝麻开门 - ZMKM')

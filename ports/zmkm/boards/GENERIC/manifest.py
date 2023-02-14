@@ -15,5 +15,5 @@ require("urequests")
 require("urllib.urequest")
 
 # micropython-lib: umqtt
-require("umqtt.simple2")
-require("umqtt.robust2")
+# require("umqtt.simple")
+# require("umqtt.robust")
