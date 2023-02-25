@@ -7,7 +7,8 @@ from machine import Pin, SoftSPI
 #   https://github.com/wendlers/micropython-mfrc522
 #   https://github.com/Zenvi/ESP8266-RC522-MicroPython
 
-class MFRC522:
+
+class RC522:
 
     OK = 0
     NOTAGERR = 1
@@ -30,8 +31,12 @@ class MFRC522:
         self.rst.value(0)
         self.cs.value(1)
 
-        self.spi = SoftSPI(baudrate=500000, polarity=0, phase=0,
-                        sck=self.sck, mosi=self.mosi, miso=self.miso)
+        self.spi = SoftSPI(baudrate=500000,
+                           polarity=0,
+                           phase=0,
+                           sck=self.sck,
+                           mosi=self.mosi,
+                           miso=self.miso)
         self.spi.init()
 
         self.rst.value(1)

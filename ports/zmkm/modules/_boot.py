@@ -13,4 +13,3 @@ if bdev:
         inisetup.setup()
 
 gc.collect()
-print('芝麻开门 - ZMKM')

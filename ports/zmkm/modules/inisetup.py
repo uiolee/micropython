@@ -48,19 +48,23 @@ def setup():
     vfs = uos.VfsLfs2(bdev)
     uos.mount(vfs, "/")
     with open("boot.py", "w") as f:
-        f.write(
-            """\
+        f.write("""\
 # This file is executed on every boot (including wake-boot from deepsleep)
-#import esp
-#esp.osdebug(None)
-#import uos, machine
-#uos.dupterm(None, 1) # disable REPL on UART(0)
+# import esp
+# esp.osdebug(None)
+# import uos, machine
+# uos.dupterm(None, 1) # disable REPL on UART(0)
 import gc
-#import webrepl
-#webrepl.start()
+
+# import webrepl
+# webrepl.start()
 gc.collect()
-"""
-        )
-    with open('test','w') as f:
-        f.write('test')
+print('芝麻开门 - ZMKM')
+""")
+
+    with open("webrepl_cfg.py", "w") as f:
+        f.write("""\
+PASS = ''
+""")
+
     return vfs
