@@ -1,7 +1,5 @@
-
-
 def led(p, v):
-    from machine import PWM, Pin
+    from machine import Pin
     return Pin(p, Pin.OUT, value=v)
 
 
@@ -15,5 +13,13 @@ def reader(sck, mosi, miso, rst, cs):
     return RC522(sck, mosi, miso, rst, cs)
 
 
-def id_cfg() -> None:
-    pass
+def id(path='id.cfg') -> None:
+    id_cfg = tuple()
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            id_cfg = tuple(f.read().split(','))
+            print('init.id()', id_cfg)
+    except Exception as err:
+        print('load id_cfg fail,', Exception, err)
+    finally:
+        return id_cfg

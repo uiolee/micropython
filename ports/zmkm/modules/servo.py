@@ -5,17 +5,16 @@ class SERVO:
 
         self.duty_unlock = duty_unlock
         self.duty_lock = duty_lock
-        self.servo = PWM(Pin(port, Pin.OUT), freq, duty_lock)
+        self.servo = PWM(Pin(port, Pin.OUT, pull=Pin.PULL_UP), freq, self.duty_lock)
         self.__t = Timer('servo')
         self.tdeinit()
 
     def tdeinit(self, s=1):
-        next=self.lock if s>1 else self.servo.deinit
-        self.__t.init(period=1000 * s, mode=0,
-                      callback=lambda t: next())
+        next = self.lock if s > 1 else self.servo.deinit
+        self.__t.init(period=1000 * s, mode=0, callback=lambda t: next())
 
     def unlock(self, s=5):
-        print('unlock')
+        print('unlock',s)
         self.servo.duty(self.duty_unlock)
         self.tdeinit(s)
 
