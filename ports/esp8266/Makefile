@@ -41,8 +41,8 @@ include $(TOP)/extmod/extmod.mk
 GIT_SUBMODULES += lib/axtls lib/berkeley-db-1.xx
 
 FWBIN = $(BUILD)/firmware-combined.bin
-PORT ?= /dev/ttyACM0
-BAUD ?= 115200
+PORT ?= /dev/ttyUSB0
+BAUD ?= 921600
 FLASH_MODE ?= qio
 FLASH_SIZE ?= detect
 CROSS_COMPILE ?= xtensa-lx106-elf-
